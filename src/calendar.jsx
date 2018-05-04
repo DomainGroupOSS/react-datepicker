@@ -52,12 +52,9 @@ var Calendar = createReactClass({
 
   mixins: [require('react-onclickoutside')],
 
-  defaultProps: {
-    onDropdownFocus: () => {}
-  },
-
   getDefaultProps () {
     return {
+      onDropdownFocus: () => {},
       utcOffset: moment.utc().utcOffset()
     }
   },

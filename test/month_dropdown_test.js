@@ -1,5 +1,5 @@
 import React from 'react'
-import TestUtils from 'react-addons-test-utils'
+import TestUtils from 'react-dom/test-utils'
 import range from 'lodash/range'
 import MonthDropdown from '../src/month_dropdown.jsx'
 

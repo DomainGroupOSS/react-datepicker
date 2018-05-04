@@ -39,10 +39,10 @@ module.exports = function (grunt) {
     },
 
     watch: {
-      eslint: {
-        files: ['{src,test,docs-site/src}/**/*.{js,jsx}', '*.js'],
-        tasks: ['eslint']
-      },
+      // eslint: {
+      //   files: ['{src,test,docs-site/src}/**/*.{js,jsx}', '*.js'],
+      //   tasks: ['eslint']
+      // },
 
       css: {
         files: '**/*.scss',
@@ -81,12 +81,12 @@ module.exports = function (grunt) {
       }
     },
 
-    eslint: {
-      files: ['{src,test,docs-site/src}/**/*.{js,jsx}', '*.js'],
-      options: {
-        configFile: '.eslintrc'
-      }
-    },
+    // eslint: {
+    //   files: ['{src,test,docs-site/src}/**/*.{js,jsx}', '*.js'],
+    //   options: {
+    //     configFile: '.eslintrc'
+    //   }
+    // },
 
     // standalone build for ./dist
     webpack: {
@@ -130,9 +130,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-babel')
   grunt.loadNpmTasks('grunt-webpack')
   grunt.loadNpmTasks('grunt-karma')
-  grunt.loadNpmTasks('grunt-eslint')
+  // grunt.loadNpmTasks('grunt-eslint')
 
   grunt.registerTask('default', ['watch', 'scsslint'])
-  grunt.registerTask('travis', ['eslint', 'karma', 'scsslint'])
+  grunt.registerTask('travis', ['karma', 'scsslint'])
   grunt.registerTask('build', ['scsslint', 'babel', 'webpack', 'sass'])
 }
