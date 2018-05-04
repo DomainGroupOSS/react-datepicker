@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react'
 import Day from './day'
 
@@ -5,23 +6,23 @@ class Week extends React.Component {
   static displayName = 'Week';
 
   static propTypes = {
-    day: React.PropTypes.object.isRequired,
-    endDate: React.PropTypes.object,
-    excludeDates: React.PropTypes.array,
-    filterDate: React.PropTypes.func,
-    highlightDates: React.PropTypes.array,
-    includeDates: React.PropTypes.array,
-    maxDate: React.PropTypes.object,
-    minDate: React.PropTypes.object,
-    month: React.PropTypes.number,
-    onDayClick: React.PropTypes.func,
-    onDayMouseEnter: React.PropTypes.func,
-    selected: React.PropTypes.object,
-    selectingDate: React.PropTypes.object,
-    selectsEnd: React.PropTypes.bool,
-    selectsStart: React.PropTypes.bool,
-    startDate: React.PropTypes.object,
-    utcOffset: React.PropTypes.number
+    day: PropTypes.object.isRequired,
+    endDate: PropTypes.object,
+    excludeDates: PropTypes.array,
+    filterDate: PropTypes.func,
+    highlightDates: PropTypes.array,
+    includeDates: PropTypes.array,
+    maxDate: PropTypes.object,
+    minDate: PropTypes.object,
+    month: PropTypes.number,
+    onDayClick: PropTypes.func,
+    onDayMouseEnter: PropTypes.func,
+    selected: PropTypes.object,
+    selectingDate: PropTypes.object,
+    selectsEnd: PropTypes.bool,
+    selectsStart: PropTypes.bool,
+    startDate: PropTypes.object,
+    utcOffset: PropTypes.number
   };
 
   handleDayClick = (day, event) => {

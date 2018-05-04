@@ -1,4 +1,5 @@
-import React, { Children, PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React, { Children } from 'react';
 import ReactDOM from 'react-dom'
 import Tether from 'tether'
 

@@ -3,6 +3,7 @@ import find from 'lodash/find'
 import YearDropdown from './year_dropdown'
 import MonthDropdown from './month_dropdown'
 import Month from './month'
+import PropTypes from 'prop-types';
 import React from 'react'
 import createReactClass from 'create-react-class';
 import { isSameDay, allDaysDisabledBefore, allDaysDisabledAfter, getEffectiveMinDate, getEffectiveMaxDate } from './date_utils'
@@ -23,30 +24,30 @@ var Calendar = createReactClass({
   displayName: 'Calendar',
 
   propTypes: {
-    dateFormat: React.PropTypes.string.isRequired,
-    dropdownMode: React.PropTypes.oneOf(['scroll', 'select']).isRequired,
-    endDate: React.PropTypes.object,
-    excludeDates: React.PropTypes.array,
-    filterDate: React.PropTypes.func,
-    fixedHeight: React.PropTypes.bool,
-    highlightDates: React.PropTypes.array,
-    includeDates: React.PropTypes.array,
-    locale: React.PropTypes.string,
-    maxDate: React.PropTypes.object,
-    minDate: React.PropTypes.object,
-    onClickOutside: React.PropTypes.func.isRequired,
-    onDropdownFocus: React.PropTypes.func,
-    onSelect: React.PropTypes.func.isRequired,
-    openToDate: React.PropTypes.object,
-    peekNextMonth: React.PropTypes.bool,
-    selected: React.PropTypes.object,
-    selectsEnd: React.PropTypes.bool,
-    selectsStart: React.PropTypes.bool,
-    showMonthDropdown: React.PropTypes.bool,
-    showYearDropdown: React.PropTypes.bool,
-    startDate: React.PropTypes.object,
-    todayButton: React.PropTypes.string,
-    utcOffset: React.PropTypes.number
+    dateFormat: PropTypes.string.isRequired,
+    dropdownMode: PropTypes.oneOf(['scroll', 'select']).isRequired,
+    endDate: PropTypes.object,
+    excludeDates: PropTypes.array,
+    filterDate: PropTypes.func,
+    fixedHeight: PropTypes.bool,
+    highlightDates: PropTypes.array,
+    includeDates: PropTypes.array,
+    locale: PropTypes.string,
+    maxDate: PropTypes.object,
+    minDate: PropTypes.object,
+    onClickOutside: PropTypes.func.isRequired,
+    onDropdownFocus: PropTypes.func,
+    onSelect: PropTypes.func.isRequired,
+    openToDate: PropTypes.object,
+    peekNextMonth: PropTypes.bool,
+    selected: PropTypes.object,
+    selectsEnd: PropTypes.bool,
+    selectsStart: PropTypes.bool,
+    showMonthDropdown: PropTypes.bool,
+    showYearDropdown: PropTypes.bool,
+    startDate: PropTypes.object,
+    todayButton: PropTypes.string,
+    utcOffset: PropTypes.number
   },
 
   mixins: [require('react-onclickoutside')],

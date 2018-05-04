@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react'
 import moment from 'moment'
 import range from 'lodash/range'
@@ -6,10 +7,10 @@ class MonthDropdown extends React.Component {
   static displayName = 'MonthDropdown';
 
   static propTypes = {
-    dropdownMode: React.PropTypes.oneOf(['scroll', 'select']).isRequired,
-    locale: React.PropTypes.string,
-    month: React.PropTypes.number.isRequired,
-    onChange: React.PropTypes.func.isRequired
+    dropdownMode: PropTypes.oneOf(['scroll', 'select']).isRequired,
+    locale: PropTypes.string,
+    month: PropTypes.number.isRequired,
+    onChange: PropTypes.func.isRequired
   };
 
   state = {

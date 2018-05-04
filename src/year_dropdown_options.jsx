@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react'
 
 import createReactClass from 'create-react-class';
@@ -14,9 +15,9 @@ var YearDropdownOptions = createReactClass({
   displayName: 'YearDropdownOptions',
 
   propTypes: {
-    onCancel: React.PropTypes.func.isRequired,
-    onChange: React.PropTypes.func.isRequired,
-    year: React.PropTypes.number.isRequired
+    onCancel: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    year: PropTypes.number.isRequired
   },
 
   mixins: [require('react-onclickoutside')],
