@@ -1,10 +1,10 @@
 import React from 'react'
 import Day from './day'
 
-var Week = React.createClass({
-  displayName: 'Week',
+class Week extends React.Component {
+  static displayName = 'Week';
 
-  propTypes: {
+  static propTypes = {
     day: React.PropTypes.object.isRequired,
     endDate: React.PropTypes.object,
     excludeDates: React.PropTypes.array,
@@ -22,21 +22,21 @@ var Week = React.createClass({
     selectsStart: React.PropTypes.bool,
     startDate: React.PropTypes.object,
     utcOffset: React.PropTypes.number
-  },
+  };
 
-  handleDayClick (day, event) {
+  handleDayClick = (day, event) => {
     if (this.props.onDayClick) {
       this.props.onDayClick(day, event)
     }
-  },
+  };
 
-  handleDayMouseEnter (day) {
+  handleDayMouseEnter = (day) => {
     if (this.props.onDayMouseEnter) {
       this.props.onDayMouseEnter(day)
     }
-  },
+  };
 
-  renderDays () {
+  renderDays = () => {
     const startOfWeek = this.props.day.clone().startOf('week')
     return [0, 1, 2, 3, 4, 5, 6].map(offset => {
       const day = startOfWeek.clone().add(offset, 'days')
@@ -62,16 +62,15 @@ var Week = React.createClass({
             utcOffset={this.props.utcOffset}/>
       )
     })
-  },
+  };
 
-  render () {
+  render() {
     return (
       <div className="react-datepicker__week">
         {this.renderDays()}
       </div>
     )
   }
-
-})
+}
 
 module.exports = Week

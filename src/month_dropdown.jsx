@@ -2,44 +2,42 @@ import React from 'react'
 import moment from 'moment'
 import range from 'lodash/range'
 
-var MonthDropdown = React.createClass({
-  displayName: 'MonthDropdown',
+class MonthDropdown extends React.Component {
+  static displayName = 'MonthDropdown';
 
-  propTypes: {
+  static propTypes = {
     dropdownMode: React.PropTypes.oneOf(['scroll', 'select']).isRequired,
     locale: React.PropTypes.string,
     month: React.PropTypes.number.isRequired,
     onChange: React.PropTypes.func.isRequired
-  },
+  };
 
-  getInitialState () {
-    return {
-      dropdownVisible: false
-    }
-  },
+  state = {
+    dropdownVisible: false
+  };
 
-  renderSelectOptions () {
+  renderSelectOptions = () => {
     const localeData = moment.localeData(this.props.locale)
     return range(0, 12).map((M, i) => (
       <option key={i} value={i}>{localeData.months(moment({M}))}</option>
     ))
-  },
+  };
 
-  renderSelectMode () {
+  renderSelectMode = () => {
     return (
       <select value={this.props.month} className="react-datepicker__month-select" onChange={e => this.onChange(e.target.value)}>
         {this.renderSelectOptions()}
       </select>
     )
-  },
+  };
 
-  onChange (month) {
+  onChange = (month) => {
     if (month !== this.props.month) {
       this.props.onChange(month)
     }
-  },
+  };
 
-  render () {
+  render() {
     let renderedDropdown
     switch (this.props.dropdownMode) {
       // TODO: implement scroll mode
@@ -58,6 +56,6 @@ var MonthDropdown = React.createClass({
       </div>
     )
   }
-})
+}
 
 module.exports = MonthDropdown

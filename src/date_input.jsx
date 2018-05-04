@@ -2,10 +2,10 @@ import moment from 'moment'
 import React from 'react'
 import { isSameDay, isDayDisabled } from './date_utils'
 
-var DateInput = React.createClass({
-  displayName: 'DateInput',
+class DateInput extends React.Component {
+  static displayName = 'DateInput';
 
-  propTypes: {
+  static propTypes = {
     customInput: React.PropTypes.element,
     date: React.PropTypes.object,
     dateFormat: React.PropTypes.oneOfType([
@@ -22,21 +22,13 @@ var DateInput = React.createClass({
     onBlur: React.PropTypes.func,
     onChange: React.PropTypes.func,
     onChangeDate: React.PropTypes.func
-  },
+  };
 
-  getDefaultProps () {
-    return {
-      dateFormat: 'L'
-    }
-  },
+  static defaultProps = {
+    dateFormat: 'L'
+  };
 
-  getInitialState () {
-    return {
-      value: this.safeDateFormat(this.props)
-    }
-  },
-
-  componentWillReceiveProps (newProps) {
+  componentWillReceiveProps(newProps) {
     if (!isSameDay(newProps.date, this.props.date) ||
           newProps.locale !== this.props.locale ||
           newProps.dateFormat !== this.props.dateFormat) {
@@ -44,18 +36,18 @@ var DateInput = React.createClass({
         value: this.safeDateFormat(newProps)
       })
     }
-  },
+  }
 
-  handleChange (event) {
+  handleChange = (event) => {
     if (this.props.onChange) {
       this.props.onChange(event)
     }
     if (!event.isDefaultPrevented()) {
       this.handleChangeDate(event.target.value)
     }
-  },
+  };
 
-  handleChangeDate (value) {
+  handleChangeDate = (value) => {
     if (this.props.onChangeDate) {
       var date = moment(value, this.props.dateFormat, this.props.locale || moment.locale(), true)
       if (date.isValid() && !isDayDisabled(date, this.props)) {
@@ -65,28 +57,32 @@ var DateInput = React.createClass({
       }
     }
     this.setState({value})
-  },
+  };
 
-  safeDateFormat (props) {
+  safeDateFormat = (props) => {
     return props.date && props.date.clone()
       .locale(props.locale || moment.locale())
       .format(Array.isArray(props.dateFormat) ? props.dateFormat[0] : props.dateFormat) || ''
-  },
+  };
 
-  handleBlur (event) {
+  handleBlur = (event) => {
     this.setState({
       value: this.safeDateFormat(this.props)
     })
     if (this.props.onBlur) {
       this.props.onBlur(event)
     }
-  },
+  };
 
-  focus () {
+  focus = () => {
     this.refs.input.focus()
-  },
+  };
 
-  render () {
+  state = {
+    value: this.safeDateFormat(this.props)
+  };
+
+  render() {
     const { customInput, date, locale, minDate, maxDate, excludeDates, includeDates, filterDate, dateFormat, onChangeDate, ...rest } = this.props // eslint-disable-line no-unused-vars
 
     if (customInput) {
@@ -107,6 +103,6 @@ var DateInput = React.createClass({
         onBlur={this.handleBlur}
         onChange={this.handleChange} />
   }
-})
+}
 
 module.exports = DateInput

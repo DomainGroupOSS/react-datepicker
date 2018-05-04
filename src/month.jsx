@@ -4,10 +4,10 @@ import Week from './week'
 
 const FIXED_HEIGHT_STANDARD_WEEK_COUNT = 6
 
-var Month = React.createClass({
-  displayName: 'Month',
+class Month extends React.Component {
+  static displayName = 'Month';
 
-  propTypes: {
+  static propTypes = {
     day: React.PropTypes.object.isRequired,
     endDate: React.PropTypes.object,
     excludeDates: React.PropTypes.array,
@@ -27,33 +27,33 @@ var Month = React.createClass({
     selectsStart: React.PropTypes.bool,
     startDate: React.PropTypes.object,
     utcOffset: React.PropTypes.number
-  },
+  };
 
-  handleDayClick (day, event) {
+  handleDayClick = (day, event) => {
     if (this.props.onDayClick) {
       this.props.onDayClick(day, event)
     }
-  },
+  };
 
-  handleDayMouseEnter (day) {
+  handleDayMouseEnter = (day) => {
     if (this.props.onDayMouseEnter) {
       this.props.onDayMouseEnter(day)
     }
-  },
+  };
 
-  handleMouseLeave () {
+  handleMouseLeave = () => {
     if (this.props.onMouseLeave) {
       this.props.onMouseLeave()
     }
-  },
+  };
 
-  isWeekInMonth (startOfWeek) {
+  isWeekInMonth = (startOfWeek) => {
     const day = this.props.day
     const endOfWeek = startOfWeek.clone().add(6, 'days')
     return startOfWeek.isSame(day, 'month') || endOfWeek.isSame(day, 'month')
-  },
+  };
 
-  renderWeeks () {
+  renderWeeks = () => {
     const weeks = []
     var isFixedHeight = this.props.fixedHeight
     let currentWeekStart = this.props.day.clone().startOf('month').startOf('week')
@@ -101,23 +101,22 @@ var Month = React.createClass({
     }
 
     return weeks
-  },
+  };
 
-  getClassNames () {
+  getClassNames = () => {
     const { selectingDate, selectsStart, selectsEnd } = this.props
     return classnames('react-datepicker__month', {
       'react-datepicker__month--selecting-range': selectingDate && (selectsStart || selectsEnd)
     })
-  },
+  };
 
-  render () {
+  render() {
     return (
       <div className={this.getClassNames()} onMouseLeave={this.handleMouseLeave} role="listbox">
         {this.renderWeeks()}
       </div>
     )
   }
-
-})
+}
 
 module.exports = Month

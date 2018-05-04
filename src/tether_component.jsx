@@ -23,10 +23,10 @@ const attachmentPositions = [
   'bottom right'
 ]
 
-var TetherComponent = React.createClass({
-  displayName: 'TetherComponent',
+class TetherComponent extends React.Component {
+  static displayName = 'TetherComponent';
 
-  propTypes: {
+  static propTypes = {
     attachment: PropTypes.oneOf(attachmentPositions).isRequired,
     children: childrenPropType,
     className: PropTypes.string,
@@ -43,41 +43,39 @@ var TetherComponent = React.createClass({
     targetAttachment: PropTypes.oneOf(attachmentPositions),
     targetModifier: PropTypes.string,
     targetOffset: PropTypes.string
-  },
+  };
 
-  getDefaultProps () {
-    return {
-      renderElementTag: 'div',
-      renderElementTo: null
-    }
-  },
+  static defaultProps = {
+    renderElementTag: 'div',
+    renderElementTo: null
+  };
 
-  componentDidMount () {
+  componentDidMount() {
     this._targetNode = ReactDOM.findDOMNode(this)
     this._update()
-  },
+  }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     this._update()
-  },
+  }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this._destroy()
-  },
+  }
 
-  disable () {
+  disable = () => {
     this._tether.disable()
-  },
+  };
 
-  enable () {
+  enable = () => {
     this._tether.enable()
-  },
+  };
 
-  position () {
+  position = () => {
     this._tether.position()
-  },
+  };
 
-  _destroy () {
+  _destroy = () => {
     if (this._elementParentNode) {
       ReactDOM.unmountComponentAtNode(this._elementParentNode)
       this._elementParentNode.parentNode.removeChild(this._elementParentNode)
@@ -89,9 +87,9 @@ var TetherComponent = React.createClass({
 
     this._elementParentNode = null
     this._tether = null
-  },
+  };
 
-  _update () {
+  _update = () => {
     const { children, renderElementTag, renderElementTo } = this.props
     let elementComponent = children[1]
 
@@ -121,9 +119,9 @@ var TetherComponent = React.createClass({
         this._updateTether()
       }
     )
-  },
+  };
 
-  _updateTether () {
+  _updateTether = () => {
     const { renderElementTag, renderElementTo, ...options } = this.props // eslint-disable-line no-unused-vars
     const tetherOptions = {
       target: this._targetNode,
@@ -138,9 +136,9 @@ var TetherComponent = React.createClass({
     }
 
     this._tether.position()
-  },
+  };
 
-  render () {
+  render() {
     const { children } = this.props
     let firstChild = null
 
@@ -155,6 +153,6 @@ var TetherComponent = React.createClass({
 
     return firstChild
   }
-})
+}
 
 module.exports = TetherComponent
