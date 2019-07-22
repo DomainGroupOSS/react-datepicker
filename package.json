@@ -1,7 +1,7 @@
 {
   "name": "@domain-group/react-datepicker",
   "description": "A simple and reusable datepicker component for React",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "homepage": "https://github.com/Hacker0x01/react-datepicker",
   "main": "dist/react-datepicker.min.js",
