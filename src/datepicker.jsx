@@ -90,6 +90,10 @@ class DatePicker extends React.Component {
     open: false
   };
 
+  componentWillUnmount() {
+    clearTimeout(this.inputFocusTimeout)
+  }
+
   setOpen = (open) => {
     this.setState({ open })
   };
@@ -106,9 +110,9 @@ class DatePicker extends React.Component {
 
   deferFocusInput = () => {
     this.cancelFocusInput()
-    this.inputFocusTimeout = defer(() => this.refs.input.focus())
+    this.inputFocusTimeout = defer(() => this.refs.input && this.refs.input.focus && this.refs.input.focus())
   };
-
+  
   handleDropdownFocus = () => {
     this.cancelFocusInput()
   };
