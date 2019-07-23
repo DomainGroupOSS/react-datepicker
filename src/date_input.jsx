@@ -76,7 +76,9 @@ class DateInput extends React.Component {
   };
 
   focus = () => {
-    this.refs.input.focus()
+    if(this.refs.input && this.refs.input.focus) {
+      this.refs.input.focus()
+    }
   };
 
   state = {
