@@ -38512,11 +38512,9 @@
 	      _this.inputFocusTimeout = null;
 	    }, _this.deferFocusInput = function () {
 	      _this.cancelFocusInput();
-	      if (_this.refs.input && _this.refs.input.focus) {
-	        _this.inputFocusTimeout = (0, _defer2.default)(function () {
-	          return _this.refs.input.focus();
-	        });
-	      }
+	      _this.inputFocusTimeout = (0, _defer2.default)(function () {
+	        return _this.refs.input && _this.refs.input.focus && _this.refs.input.focus();
+	      });
 	    }, _this.handleDropdownFocus = function () {
 	      _this.cancelFocusInput();
 	    }, _this.handleBlur = function (event) {
@@ -38643,6 +38641,11 @@
 	  }
 
 	  _createClass(DatePicker, [{
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      clearTimeout(this.inputFocusTimeout);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var calendar = this.renderCalendar();
